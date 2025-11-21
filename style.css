@@ -46,13 +46,6 @@ body {
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
-.button-row {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
 .submit-btn {
   display: inline-block;
   background: white;
@@ -63,18 +56,9 @@ body {
   border-radius: 50px;
   font-size: 1.25rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  position: relative;
 }
 
 .submit-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
-.submit-btn:hover::after {
-  content: "Coming soon...";
-}
-
-.submit-btn:hover {
-  color: transparent;
 }
