@@ -45,3 +45,21 @@ body {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
+
+.submit-btn {
+  padding: 12px 24px;
+  background: #888;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  position: relative;
+  transition: 0.2s;
+}
+
+.submit-btn:hover::after {
+  content: "Coming soon...";
+}
+
+.submit-btn:hover {
+  color: transparent;
+}
