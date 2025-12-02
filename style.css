@@ -2,19 +2,20 @@
 
 body {
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #ff8a00, #e52e71);
+  justify-content: flex-start; /* align container to left */
+  align-items: flex-start; /* align top of page */
+  background: linear-gradient(135deg, #cc7000, #b0265b); /* darker gradient */
   font-family: 'Inter', sans-serif;
   color: white;
-  text-align: center;
+  padding: 40px; /* add some space from left/top */
 }
 
 .container {
   max-width: 600px;
   padding: 20px;
+  text-align: left; /* left-align text */
 }
 
 .title {
@@ -29,36 +30,35 @@ body {
   opacity: 0.9;
 }
 
-.rsvp-btn {
-  display: inline-block;
-  background: white;
-  color: #e52e71;
-  font-weight: 700;
-  text-decoration: none;
-  padding: 1rem 2.5rem;
-  border-radius: 50px;
-  font-size: 1.25rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.button-row {
+  margin-bottom: 2rem;
 }
 
-.rsvp-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
+.rsvp-btn,
 .submit-btn {
   display: inline-block;
   background: white;
-  color: #e52e71;
+  color: #b0265b; /* darker pink for buttons */
   font-weight: 700;
   text-decoration: none;
   padding: 1rem 2.5rem;
   border-radius: 50px;
   font-size: 1.25rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-right: 1rem; /* spacing between buttons */
 }
 
+.rsvp-btn:hover,
 .submit-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.requirements h2 {
+  margin-bottom: 1rem;
+}
+
+.requirements ul {
+  padding-left: 1.2rem;
+  list-style-type: disc;
 }
