@@ -25,7 +25,9 @@ body{
   padding:28px;
 }
 
-/* App container */
+/* App container
+   Make the app constrained to the viewport and use flex so the main layout can grow and scroll.
+*/
 .app{
   max-width:var(--maxw);
   margin:0 auto;
@@ -34,9 +36,14 @@ body{
   overflow:hidden;
   box-shadow: 0 20px 60px rgba(2,8,23,0.6);
   border: 1px solid rgba(255,255,255,0.04);
+
+  /* NEW: layout as column with constrained height */
+  display:flex;
+  flex-direction:column;
+  max-height: calc(100vh - 56px); /* leave a bit of room for viewport padding */
 }
 
-/* Top bar */
+/* Top bar stays fixed size */
 .topbar{
   display:flex;
   align-items:center;
@@ -44,6 +51,7 @@ body{
   padding:14px 18px;
   background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
   border-bottom:1px solid rgba(255,255,255,0.02);
+  flex: 0 0 auto;
 }
 .top-left,.top-center,.top-right{display:flex;align-items:center}
 .top-left{flex:0 0 auto}
@@ -74,19 +82,32 @@ body{
 .btn.small{padding:6px 8px;font-size:13px}
 .btn.ghost.small{background:transparent;border:1px solid rgba(255,255,255,0.03)}
 
-/* Layout panes */
+/* Layout panes
+   Allow the main layout to grow and scroll internally.
+*/
 .layout{
   display:grid;
   grid-template-columns:220px 1fr 420px;
   gap:18px;
   padding:18px;
   align-items:start;
+
+  /* NEW: allow layout to take remaining height and scroll if content overflows */
+  flex: 1 1 auto;
+  overflow: auto;
+  min-height: 0; /* important for children with overflow:auto to work inside flex containers */
 }
 
 /* Sidebar */
 .sidebar{
   background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-  padding:12px;border-radius:12px;height:540px;display:flex;flex-direction:column;justify-content:space-between;
+  padding:12px;border-radius:12px;
+  /* NEW: let sidebar scroll internally if content is tall */
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  min-height: 0;
+  overflow: auto;
 }
 .account-pill{display:flex;align-items:center;gap:10px}
 .account-bubble{width:36px;height:36px;border-radius:10px;background:linear-gradient(90deg,#fbc2eb,#a6c1ee);display:flex;align-items:center;justify-content:center;color:#04202a;font-weight:700}
@@ -98,10 +119,15 @@ body{
 /* List pane */
 .list-pane{
   background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-  border-radius:12px;padding:12px;height:540px;overflow:hidden;display:flex;flex-direction:column;
+  border-radius:12px;padding:12px;
+  /* NEW: arrange as a column so header + list can size properly; allow internal scrolling */
+  display:flex;
+  flex-direction:column;
+  min-height: 0;
+  overflow: hidden;
 }
 .list-header{display:flex;justify-content:space-between;align-items:center;padding:8px 6px 12px 6px}
-.items{list-style:none;padding:0;margin:0;overflow:auto;flex:1}
+.items{list-style:none;padding:0;margin:0;overflow:auto;flex:1;min-height:0} /* NEW: make the items list scrollable within the pane */
 .item-row{
   display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;margin-bottom:6px;cursor:pointer;
 }
@@ -119,7 +145,10 @@ body{
 /* Detail pane */
 .detail-pane{
   background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-  border-radius:12px;padding:12px;height:540px;display:flex;flex-direction:column;gap:12px;
+  border-radius:12px;padding:12px;
+  display:flex;flex-direction:column;gap:12px;
+  min-height: 0;
+  overflow: auto; /* NEW: make the detail pane scrollable */
 }
 .detail-top{display:flex;justify-content:space-between;align-items:center}
 .detail-heading{display:flex;gap:12px;align-items:center}
