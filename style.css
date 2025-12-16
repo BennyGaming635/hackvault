@@ -1,0 +1,70 @@
+html {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 12px;
+      background: white;
+      color: black;
+    }
+
+    h1 {
+      color: rgb(222, 172, 81);
+    }
+
+    body {
+      margin: 40px;
+    }
+
+    .terminal {
+      max-width: 600px;
+    }
+
+    .line {
+      display: flex;
+      align-items: center;
+    }
+
+    .prompt {
+      margin-right: 6px;
+    }
+
+    input {
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: inherit;
+      width: 100%;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      background: black;
+      margin-left: 2px;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .output {
+      margin-top: 10px;
+      white-space: pre-line;
+    }
+
+    html.dark {
+    background: #111;
+    color: #eee;
+    }
+
+    html.dark h1 {
+    color: rgb(222, 172, 81);
+    }
+
+    html.dark .cursor {
+    background: #eee;
+    }
+
+    html.dark input {
+    color: #eee;
+    background: transparent;
+    }

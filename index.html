@@ -1,188 +1,59 @@
-<!doctype html>
-<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hackvault YSWS</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-
+  <title>Hackvault</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
-    <header class="topbar">
-      <div class="top-left">
-        <div class="logo">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="2" y="6" width="20" height="14" rx="4" fill="#ffffff08"></rect>
-            <path d="M7 10V7a5 5 0 0 1 10 0v3" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
-            <circle cx="12" cy="14" r="1.6" fill="#60e0c7"></circle>
-          </svg>
-          <span class="app-title">YSWS</span>
-        </div>
-      </div>
+  <div class="terminal">
+    <h1>Welcome to the Hackvault Terminal</h1>
 
-      <div class="top-center">
-        <div class="search">
-          <input id="search" placeholder="Search in All Accounts" aria-label="Search accounts">
-        </div>
-      </div>
+    <div class="line">
+      <span class="prompt">&gt;</span>
+      <input id="cmd" autofocus />
+      <span class="cursor"></span>
+    </div>
 
-      <div class="top-right">
-        <button id="newItem" class="btn ghost">+ New Item</button>
-        <a id="submitLink" class="btn primary" href="https://forms.hackclub.com/t/9vXhfzDvfrus">Submit work</a>
-      </div>
-    </header>
-
-    <main class="layout">
-      <aside class="sidebar">
-        <div class="sidebar-header">
-          <div class="account-pill">
-            <div class="account-bubble">HC</div>
-            <div class="account-name">All Accounts</div>
-            <div class="chev">▾</div>
-          </div>
-        </div>
-
-        <nav class="collections">
-          <button class="collection active">All Items</button>
-          <button class="collection">Favorites</button>
-          <button class="collection">Watchtower</button>
-          <button class="collection">AGILEBITS</button>
-          <button class="collection">HACKVAULT</button>
-        </nav>
-
-        <div class="sidebar-bottom">
-          <button class="item small">Archive</button>
-          <button class="item small">Recently Deleted</button>
-        </div>
-      </aside>
-
-      <section class="list-pane">
-        <div class="list-header">
-          <div class="list-title">All Items</div>
-          <div class="list-meta">12</div>
-        </div>
-
-        <ul id="itemsList" class="items">
-          <li class="item-row active" data-id="amazon" tabindex="0">
-            <div class="fav"></div>
-            <div class="icon color-1">A</div>
-            <div class="meta">
-              <div class="name">Amazon</div>
-              <div class="sub">dave@teare.me</div>
-            </div>
-            <div class="chev">›</div>
-          </li>
-
-          <li class="item-row" data-id="apple" tabindex="0">
-            <div class="fav"></div>
-            <div class="icon color-2"></div>
-            <div class="meta">
-              <div class="name">Apple ID</div>
-              <div class="sub">dave@teare.me</div>
-            </div>
-            <div class="chev">›</div>
-          </li>
-
-          <li class="item-row" data-id="disney" tabindex="0">
-            <div class="fav"></div>
-            <div class="icon color-3">D</div>
-            <div class="meta">
-              <div class="name">Disney+</div>
-              <div class="sub">dave@teare.me</div>
-            </div>
-            <div class="chev">›</div>
-          </li>
-
-          <li class="item-row" data-id="twitter" tabindex="0">
-            <div class="fav"></div>
-            <div class="icon color-4">t</div>
-            <div class="meta">
-              <div class="name">Twitter</div>
-              <div class="sub">@teare</div>
-            </div>
-            <div class="chev">›</div>
-          </li>
-
-          <li class="item-row" data-id="visa" tabindex="0">
-            <div class="fav"></div>
-            <div class="icon color-5">V</div>
-            <div class="meta">
-              <div class="name">Visa</div>
-              <div class="sub">•••• 1881</div>
-            </div>
-            <div class="chev">›</div>
-          </li>
-        </ul>
-      </section>
-
-      <section class="detail-pane" aria-live="polite">
-        <div class="detail-top">
-          <div class="detail-heading">
-            <div class="detail-icon color-1">A</div>
-            <div class="detail-title-group">
-              <h2 id="detailTitle">Amazon</h2>
-              <div class="detail-sub">dave@teare.me</div>
-            </div>
-          </div>
-
-          <div class="detail-actions">
-            <button class="btn ghost small">Edit</button>
-            <button class="btn ghost small">Share</button>
-          </div>
-        </div>
-
-        <div class="detail-card">
-          <dl class="fields">
-            <div class="field">
-              <dt>username</dt>
-              <dd id="field-username">dave@teare.me</dd>
-            </div>
-
-            <div class="field">
-              <dt>password</dt>
-              <dd id="field-password">••••••••••</dd>
-            </div>
-
-            <div class="field">
-              <dt>one-time password</dt>
-              <dd id="field-otp">311 • 239</dd>
-            </div>
-
-            <div class="field">
-              <dt>website</dt>
-              <dd id="field-website"><a href="https://amazon.ca" target="_blank" rel="noopener">https://amazon.ca</a></dd>
-            </div>
-
-            <div class="field">
-              <dt>linked apps</dt>
-              <dd id="field-links">Prime Video</dd>
-            </div>
-
-            <div class="field notes">
-              <dt>notes</dt>
-              <dd id="field-notes">Amazon Prime 🇨🇦. Use Sara's account for 🇦🇺. (idk who Sara is, it sounded like Sora)</dd>
-            </div>
-          </dl>
-        </div>
-
-        <div class="reward-card">
-          <strong>YSWS Reward</strong>
-          <p>Build a secure password manager. Verified 5 hours → YubiKey 5C or 10 hours for a Yubikey Bio.</p>
-          <br>
-          <a id="submitLinkBottom" class="btn primary" href="#">Submit your work</a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="f-left">Hackvault YSWS</div>
-      <div class="f-right muted">Made for Hackvault by Hackvault.</div>
-    </footer>
+    <div class="output" id="output"></div>
   </div>
 
-  <script src="script.js"></script>
+<script>
+  const input = document.getElementById("cmd");
+  const output = document.getElementById("output");
+  const root = document.documentElement;
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter") return;
+
+    const cmd = input.value.trim().toLowerCase();
+    input.value = "";
+
+    if (cmd === "help") {
+      output.textContent =
+`Available commands:
+- help
+- submit
+- about
+- slack
+- dark
+- light`;
+    } else if (cmd === "dark") {
+      root.classList.add("dark");
+      output.textContent = "Dark mode enabled.";
+    } else if (cmd === "light") {
+      root.classList.remove("dark");
+      output.textContent = "Light mode enabled.";
+    } else if (cmd === "submit") {
+      window.location.href = "https://forms.hackclub.com/t/9vXhfzDvfrus";
+    } else if (cmd === "about") {
+      window.location.href = "about.html";
+    } else if (cmd === "slack") {
+      window.location.href = "https://hackclub.com/slack";
+    } else if (cmd === "changelog") {
+      output.textContent = "Changelog:\n- v1.2: Added dark/light mode\n- v1.1: Fixed submit link\n- v1.0: Initial release";
+    } else {
+      output.textContent = "Unknown command. Type 'help'.";
+    }
+  });
+</script>
+
 </body>
 </html>
