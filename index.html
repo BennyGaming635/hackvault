@@ -34,6 +34,8 @@
 - about
 - slack
 - dark
+- gallery
+- clear
 - light`;
     } else if (cmd === "dark") {
       root.classList.add("dark");
@@ -49,10 +51,63 @@
       window.location.href = "https://hackclub.com/slack";
     } else if (cmd === "changelog") {
       output.textContent = "Changelog:\n- v1.2: Added dark/light mode\n- v1.1: Fixed submit link\n- v1.0: Initial release";
+    } else if (cmd === "gallery") {
+      output.textContent = "Opening gallery…";
+      renderGallery();
+    } else if (cmd === "clear") {
+      output.textContent = "";
+      view.innerHTML = "";
     } else {
       output.textContent = "Unknown command. Type 'help'.";
     }
   });
+</script>
+<div id="view"></div>
+<script>
+  const view = document.getElementById("view");
+
+async function renderGallery() {
+  view.innerHTML = "Loading projects…";
+
+  const USER = "BennyGaming635";
+  const REPO = "Hackvault";
+  const BASE = `https://api.github.com/repos/${USER}/${REPO}/contents/projects`;
+
+  const res = await fetch(BASE);
+  const items = await res.json();
+
+  const grid = document.createElement("div");
+  grid.className = "gallery";
+
+  for (const item of items) {
+    if (item.type !== "dir") continue;
+
+    try {
+      const r = await fetch(`${BASE}/${item.name}/README.md`);
+      const readme = await r.json();
+      const text = atob(readme.content);
+
+      const lines = text.split("\n").map(l => l.trim());
+      const title = lines.find(l => l.startsWith("# "))?.replace("# ", "") || item.name;
+      const submissionName = lines.find(l => l.startsWith("## "))?.replace(/^##\s+/, "") || "Unnamed submission";
+      const desc = lines.find(l => l && !l.startsWith("#")) || "No description.";
+
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <h2>${title}</h2>
+        <p><strong>${submissionName}</strong></p>
+        <p>${desc}</p>
+        <a href="${readme.html_url}" target="_blank">README</a>
+      `;
+
+      grid.appendChild(card);
+    } catch {}
+  }
+
+  view.innerHTML = "";
+  view.appendChild(grid);
+}
 </script>
 
 </body>
