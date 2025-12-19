@@ -22,7 +22,28 @@
 
     <div class="output" id="output"></div>
   </div>
+<script>
+const win = document.getElementById("window");
+const bar = document.getElementById("titlebar");
 
+let offsetX = 0, offsetY = 0, dragging = false;
+
+bar.addEventListener("mousedown", (e) => {
+  dragging = true;
+  offsetX = e.clientX - win.offsetLeft;
+  offsetY = e.clientY - win.offsetTop;
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!dragging) return;
+  win.style.left = (e.clientX - offsetX) + "px";
+  win.style.top = (e.clientY - offsetY) + "px";
+});
+
+document.addEventListener("mouseup", () => {
+  dragging = false;
+});
+</script>
 <script>
   const input = document.getElementById("cmd");
   const output = document.getElementById("output");
@@ -131,28 +152,6 @@ async function renderGallery() {
   view.innerHTML = "";
   view.appendChild(grid);
 }
-</script>
-<script>
-const win = document.getElementById("window");
-const bar = document.getElementById("titlebar");
-
-let offsetX = 0, offsetY = 0, dragging = false;
-
-bar.addEventListener("mousedown", (e) => {
-  dragging = true;
-  offsetX = e.clientX - win.offsetLeft;
-  offsetY = e.clientY - win.offsetTop;
-});
-
-document.addEventListener("mousemove", (e) => {
-  if (!dragging) return;
-  win.style.left = (e.clientX - offsetX) + "px";
-  win.style.top = (e.clientY - offsetY) + "px";
-});
-
-document.addEventListener("mouseup", () => {
-  dragging = false;
-});
 </script>
 </div>
 </body>
