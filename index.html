@@ -3,6 +3,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="window" id="window">
+  <div class="titlebar" id="titlebar">
+    Hackvault Terminal
+  </div>
+
+  <div class="window-content">
   <div class="terminal">
     <h1>Welcome to the Hackvault Terminal</h1>
     <p>Type help to see all commands.</p>
@@ -125,6 +132,29 @@ async function renderGallery() {
   view.appendChild(grid);
 }
 </script>
+<script>
+const win = document.getElementById("window");
+const bar = document.getElementById("titlebar");
 
+let offsetX = 0, offsetY = 0, dragging = false;
+
+bar.addEventListener("mousedown", (e) => {
+  dragging = true;
+  offsetX = e.clientX - win.offsetLeft;
+  offsetY = e.clientY - win.offsetTop;
+});
+
+document.addEventListener("mousemove", (e) => {
+  if (!dragging) return;
+  win.style.left = (e.clientX - offsetX) + "px";
+  win.style.top = (e.clientY - offsetY) + "px";
+});
+
+document.addEventListener("mouseup", () => {
+  dragging = false;
+});
+</script>
+</div>
 </body>
 </html>
+

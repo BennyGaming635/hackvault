@@ -97,3 +97,46 @@ html {
     padding: 3px 6px;
     text-decoration: none;
 }
+
+.window {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  width: 700px;
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  color: #eee;
+}
+
+.titlebar {
+  padding: 8px 12px;
+  background: #1c1c1c;
+  cursor: move;
+  user-select: none;
+  font-weight: bold;
+  border-bottom: 1px solid #333;
+}
+
+.window-content {
+  padding: 12px;
+}
+
+
+html.dark .window {
+  background: #0d0d0d;
+}
+
+.terminal input#cmd {
+  background: #000;
+  color: #0f0;
+  border: none;
+  outline: none;
+  font-family: monospace;
+}
+
+html:not(.dark) .terminal input#cmd {
+  background: #000;
+  color: #0f0;
+}
