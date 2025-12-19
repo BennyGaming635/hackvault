@@ -36,10 +36,18 @@
 - dark
 - gallery
 - clear
+- changelog
+- guides
 - light`;
     } else if (cmd === "dark") {
       root.classList.add("dark");
       output.textContent = "Dark mode enabled.";
+    } else if (cmd === "guides") {
+      output.textContent = `
+      Thanks for running the GUIDE utility.
+      Here are some guides I recommend;
+      - https://www.youtube.com/watch?v=w68BBPDAWr8&pp=ygUeSG93IHRvIG1ha2UgYSBwYXNzd29yZCBtYW5hZ2Vy (How Password Managers Work - Computerphile)
+      `;
     } else if (cmd === "light") {
       root.classList.remove("dark");
       output.textContent = "Light mode enabled.";
@@ -57,7 +65,7 @@ P.S If you're ready to submit please type 'submit'.`;
     } else if (cmd === "slack") {
       window.location.href = "https://hackclub.com/slack";
     } else if (cmd === "changelog") {
-      output.textContent = "Changelog:\n- v1.2: Added dark/light mode\n- v1.1: Fixed submit link\n- v1.0: Initial release";
+      output.textContent = "Changelog:\n- v1.4: Added new secret and also a video how to make a password manager. \n- v1.3: Added new about context and merged about page & gallery\n- v1.2: Added dark/light mode\n- v1.1: Fixed submit link\n- v1.0: Initial release";
     } else if (cmd === "gallery") {
       output.textContent = "Opening gallery…";
       renderGallery();
