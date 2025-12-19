@@ -5,6 +5,7 @@
 <body>
   <div class="terminal">
     <h1>Welcome to the Hackvault Terminal</h1>
+    <p>Type help to see all commands.</p>
 
     <div class="line">
       <span class="prompt">&gt;</span>
@@ -29,16 +30,16 @@
     if (cmd === "help") {
       output.textContent =
 `Available commands:
-- help
-- submit
-- about
-- slack
-- dark
-- gallery
-- clear
-- changelog
-- guides
-- light`;
+- help - reopen this window.
+- submit - opens the submission form.
+- about - information about this ysws.
+- slack - links to the Hack Club slack.
+- dark - dark mode!
+- gallery - see all the epic submissions.
+- clear - clear the chat.
+- changelog - shows whats happened in each terminal update.
+- guides - some guides we think might help.
+- light - scary light mode :( `;
     } else if (cmd === "dark") {
       root.classList.add("dark");
       output.textContent = "Dark mode enabled.";
